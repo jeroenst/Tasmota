@@ -1125,10 +1125,12 @@ bool Xdrv63(uint8_t function)
       break;
     case FUNC_LOOP:
       ModbusBridgeHandle();
-#ifdef USE_MODBUS_BRIDGE_TCP
-      ModbusTCPHandle();
-#endif
       break;
+#ifdef USE_MODBUS_BRIDGE_TCP
+    case FUNC_EVERY_100_MSECOND:
+      ModbusTCPHandle();
+      break;
+#endif
     }
   }
   return result;
